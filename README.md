@@ -32,7 +32,7 @@ Each microservice is a standalone application that can be deployed independently
 Technologies Used
 The Ecommerce Microservice solution utilizes the following technologies:
 
-.NET Core 3.1
+.NET Core 7
 Docker
 RabbitMQ
 MongoDb
