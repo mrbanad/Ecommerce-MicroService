@@ -1,0 +1,58 @@
+version: '3.5'
+services:
+  ApiGateway:
+    image: ${DOCKER_REGISTRY-}apigateway:v2
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "443:443"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  ProductService:
+    image: ${DOCKER_REGISTRY-}product:v2
+    build:
+      context: ./Product/ProductService
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4201
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4201:4201"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  BasketService:
+    image: ${DOCKER_REGISTRY-}basket:v2
+    build:
+      context: ./Basket/BasketService
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4202
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4202:4202"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  IdentityService:
+    image: ${DOCKER_REGISTRY-}identity:v2
+    build:
+      context: ./Identity/AuthenticationService
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4202
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4202:4202"
+    volumes:
+        - ~/.aspnet/https:/https:ro

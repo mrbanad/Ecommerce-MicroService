@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{981BC410-6FCF-4F8E-809B-7C3DC59FF16C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{F05B7BFB-2BFE-486F-BCFA-5E3A4CCD0B2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "Product\ProductService\ProductService.csproj", "{CA0F95F9-98CA-4428-A129-07E69E95FE37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{AE9E191C-13AB-4E90-8D3C-38C88B5E9B64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{11909426-18F9-45DF-A7DA-11C7D34567DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "Identity\AuthenticationService\AuthenticationService.csproj", "{E0278E17-4CB0-476D-BA91-A01E0BE039F9}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FEA0C318-FFED-4D39-8781-265718CA43DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{063BB681-F6A1-4101-AB80-427C1FCA30C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasketService", "Basket\BasketService\BasketService.csproj", "{E35A259B-6211-4BD9-A35D-3B69E4BF1CCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CA0F95F9-98CA-4428-A129-07E69E95FE37} = {981BC410-6FCF-4F8E-809B-7C3DC59FF16C}
+		{AE9E191C-13AB-4E90-8D3C-38C88B5E9B64} = {F05B7BFB-2BFE-486F-BCFA-5E3A4CCD0B2B}
+		{E0278E17-4CB0-476D-BA91-A01E0BE039F9} = {11909426-18F9-45DF-A7DA-11C7D34567DC}
+		{E35A259B-6211-4BD9-A35D-3B69E4BF1CCB} = {063BB681-F6A1-4101-AB80-427C1FCA30C2}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA0F95F9-98CA-4428-A129-07E69E95FE37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA0F95F9-98CA-4428-A129-07E69E95FE37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA0F95F9-98CA-4428-A129-07E69E95FE37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA0F95F9-98CA-4428-A129-07E69E95FE37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE9E191C-13AB-4E90-8D3C-38C88B5E9B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE9E191C-13AB-4E90-8D3C-38C88B5E9B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE9E191C-13AB-4E90-8D3C-38C88B5E9B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE9E191C-13AB-4E90-8D3C-38C88B5E9B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0278E17-4CB0-476D-BA91-A01E0BE039F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0278E17-4CB0-476D-BA91-A01E0BE039F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0278E17-4CB0-476D-BA91-A01E0BE039F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0278E17-4CB0-476D-BA91-A01E0BE039F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35A259B-6211-4BD9-A35D-3B69E4BF1CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35A259B-6211-4BD9-A35D-3B69E4BF1CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35A259B-6211-4BD9-A35D-3B69E4BF1CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35A259B-6211-4BD9-A35D-3B69E4BF1CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
