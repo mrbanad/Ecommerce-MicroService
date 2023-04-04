@@ -1,4 +1,4 @@
-This repository contains a .NET Core microservice-based solution for an Ecommerce application. The solution is designed to be scalable, resilient and easy to maintain. It is built using a microservice architecture and utilizes various technologies such as Docker, RabbitMQ, Redis and EF Core.
+This repository contains a .NET Core microservice-based solution for an Ecommerce application. The solution is designed to be scalable, resilient and easy to maintain. It is built using a microservice architecture and utilizes various technologies such as Docker, RabbitMQ and MongoDB.
 
 Getting Started
 To get started with this project, you will need to have the following installed on your machine:
