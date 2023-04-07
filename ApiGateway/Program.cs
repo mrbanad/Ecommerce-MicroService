@@ -38,6 +38,7 @@ builder.Services.AddSingleton<IRabbitMqPersistentConnection>(sp =>
 
     return new RabbitMqPersistentConnection(factory, logger, retryCount);
 });
+builder.Services.AddHostedService<RabbitMqEvent>();
 
 builder.Services.AddAuthentication(options =>
     {

@@ -1,4 +1,6 @@
-﻿namespace ProductService.RabbitMQ;
+﻿using ProductService.RabbitMQ;
+
+namespace ApiGateway.RabbitMQ;
 
 public class RabbitMqEvent : IHostedService
 {
@@ -11,6 +13,8 @@ public class RabbitMqEvent : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        _rabbitMqPersistentConnection.TryConnect();
+
         return Task.CompletedTask;
     }
 
