@@ -24,8 +24,8 @@ public class ExceptionMiddleware
 
             // Return a meaningful error response to the client
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            
+            context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+
             await context.Response.WriteAsync(new
             {
                 ErrorMessage = "An error occurred while processing your request."

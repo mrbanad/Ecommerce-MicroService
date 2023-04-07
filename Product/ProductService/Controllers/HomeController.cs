@@ -35,8 +35,6 @@ public class HomeController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ChangePrice(string productId, int price, CancellationToken cancellationToken)
     {
-        return Problem();
-        
         var product = await _productService.GetAsync(productId, cancellationToken);
 
         product.Price = price;

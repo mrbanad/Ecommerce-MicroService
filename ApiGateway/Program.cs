@@ -78,8 +78,6 @@ builder.Services.AddCors(opt => opt.AddPolicy("CorsPolicy",
     }
 ));
 
-
-
 builder.Services.AddOcelot(builder.Configuration);
 
 builder.Services.AddSwaggerForOcelot(builder.Configuration);

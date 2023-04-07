@@ -64,7 +64,7 @@ namespace ApiGateway
             };
 
             context.NoResult();
-            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            context.Response.StatusCode = (int) HttpStatusCode.Unauthorized;
             context.Response.ContentType = "application/json";
             context.Response.WriteAsync(JsonConvert.SerializeObject(response)).Wait();
 
