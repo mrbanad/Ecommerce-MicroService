@@ -1,5 +1,19 @@
 version: '3.5'
 services:
+  AddressServices:
+    image: ${DOCKER_REGISTRY-}address:v2
+    build:
+      context: ./AddressServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4217
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4217:4217"
+    volumes:
+      - ~/.aspnet/https:/https:ro
   ApiGateway:
     image: ${DOCKER_REGISTRY-}apigateway:v2
     build:
@@ -7,17 +21,129 @@ services:
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443
+      - ASPNETCORE_URLS=https://+:44443
       - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
-      - "443:443"
+      - "44443:44443"
     volumes:
       - ~/.aspnet/https:/https:ro
-  ProductService:
+  AuthenticationService:
+    image: ${DOCKER_REGISTRY-}authentication:v2
+    build:
+      context: ./AuthenticationService
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4200
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4200:4200"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  BranchServices:
+    image: ${DOCKER_REGISTRY-}branch:v2
+    build:
+      context: ./BranchServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4212
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4212:4212"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  CategoryServices:
+    image: ${DOCKER_REGISTRY-}category:v2
+    build:
+      context: ./CategoryServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4203
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4203:4203"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  CommentServices:
+    image: ${DOCKER_REGISTRY-}comment:v2
+    build:
+      context: ./CommentServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4213
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4213:4213"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  CouponServices:
+    image: ${DOCKER_REGISTRY-}coupon:v2
+    build:
+      context: ./CouponServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4204
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4204:4204"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  NewsServices:
+    image: ${DOCKER_REGISTRY-}news:v2
+    build:
+      context: ./NewsServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4215
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4215:4215"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  OrderServices:
+    image: ${DOCKER_REGISTRY-}order:v2
+    build:
+      context: ./OrderServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4205
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4205:4205"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  PaymentServices:
+    image: ${DOCKER_REGISTRY-}payment:v2
+    build:
+      context: ./PaymentServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4206
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4206:4206"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+  ProductServices:
     image: ${DOCKER_REGISTRY-}product:v2
     build:
-      context: ./Product/ProductService
+      context: ./ProductServices
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -28,31 +154,45 @@ services:
       - "4201:4201"
     volumes:
       - ~/.aspnet/https:/https:ro
-  BasketService:
-    image: ${DOCKER_REGISTRY-}basket:v2
+  SetupServices:
+    image: ${DOCKER_REGISTRY-}setup:v2
     build:
-      context: ./Basket/BasketService
+      context: ./SetupServices
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:4202
+      - ASPNETCORE_URLS=https://+:4216
       - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
-      - "4202:4202"
+      - "4216:4216"
     volumes:
       - ~/.aspnet/https:/https:ro
-  IdentityService:
-    image: ${DOCKER_REGISTRY-}identity:v2
+  ShippingServices:
+    image: ${DOCKER_REGISTRY-}shipping:v2
     build:
-      context: ./Identity/AuthenticationService
+      context: ./ShippingServices
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:4202
+      - ASPNETCORE_URLS=https://+:4208
       - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     ports:
-      - "4202:4202"
+      - "4208:4208"
     volumes:
-        - ~/.aspnet/https:/https:ro
+      - ~/.aspnet/https:/https:ro
+  StatisticsServices:
+    image: ${DOCKER_REGISTRY-}statistics:v2
+    build:
+      context: ./StatisticsServices
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:4209
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=MoonTest
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    ports:
+      - "4209:4209"
+    volumes:
+      - ~/.aspnet/https:/https:ro

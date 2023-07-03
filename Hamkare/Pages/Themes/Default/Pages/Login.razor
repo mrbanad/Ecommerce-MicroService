@@ -1,0 +1,79 @@
+﻿@page "/login"
+@using CommonClassLibrary.Dto.Authentication.Login
+@using Hamkare.HttpClients
+@using Hamkare.Services
+
+@inject NavigationManager NavigationManager
+@inject ITokenService TokenService
+<PageTitle>Login</PageTitle>
+
+<h1>Login</h1>
+
+@* <EditForm Model="@_userLoginDto" OnValidSubmit="@HandleValidSubmit"> *@
+@*     <div class="mb-3"> *@
+@*         <InputText class="form-control" id="Email" @bind-value="_userLoginDto.UserName" placeholder="Email" /> *@
+@*     </div> *@
+@* *@
+@*     <div class="mb-3"> *@
+@*         <InputText class="form-control" id="Password" @bind-value="_userLoginDto.Password" placeholder="Password" /> *@
+@*     </div> *@
+@* *@
+@*     @if (!_loggingIn) *@
+@*     { *@
+@*         <button class="btn btn-primary" type="submit">Submit</button> *@
+@*     } *@
+@*     else *@
+@*     { *@
+@*         <p> *@
+@*             Logging in... *@
+@*         </p> *@
+@*     } *@
+@* *@
+@* </EditForm> *@
+
+@code {
+    private readonly LoginDto _userLoginDto = new();
+    private bool _loggingIn;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _loggingIn = true;
+
+        var result = await HttpClientApi.GetToken(new LoginDto
+        { UserName = "Rezabanad@gmail.com", Password = "Banad@2372", IsPersistent = false });
+
+        if (result.Token != null)
+        {
+            await TokenService.SetToken(result.Token);
+            NavigationManager.NavigateTo("/User");
+        }
+        else
+        {
+    // var errors = new Dictionary<string, List<string>>();
+    // errors.Add("", new List<string> { result.Message });
+        }
+
+        _loggingIn = false;
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        _loggingIn = true;
+
+        var result = await HttpClientApi.GetToken(_userLoginDto);
+
+        if (result.Token != null)
+        {
+            await TokenService.SetToken(result.Token);
+            NavigationManager.NavigateTo("dashboard");
+        }
+        else
+        {
+    // var errors = new Dictionary<string, List<string>>();
+    // errors.Add("", new List<string> { result.Message });
+        }
+
+        _loggingIn = false;
+    }
+
+}

@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="7.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="7.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="7.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.7" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.7" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+        <PackageReference Include="MudBlazor" Version="6.4.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
+        <Content Remove="ViewModel\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Pages\ManagementPanel\Shared\" />
+        <Folder Include="Pages\UserPanel\Shared\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CommonClassLibrary\CommonClassLibrary.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <_ContentIncludedByDefault Remove="wwwroot\css\app.css" />
+        <_ContentIncludedByDefault Remove="Areas\Main\Shared\GanjEsar\MainLayout.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Main\Themes\GanjEsar\Pages\Index.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Main\Themes\GanjEsar\Shared\MainLayout.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="ViewModel\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="ViewModel\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="ViewModel\**" />
+    </ItemGroup>
+</Project>

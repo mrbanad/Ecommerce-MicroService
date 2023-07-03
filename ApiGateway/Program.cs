@@ -1,4 +1,3 @@
-using ApiGateway;
 using ApiGateway.Middleware;
 using ApiGateway.RabbitMQ;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -6,7 +5,6 @@ using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using ProductService.RabbitMQ;
 using RabbitMQ.Client;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,7 +52,7 @@ builder.Services.AddAuthentication(options =>
         {
             ValidateIssuer = true,
             ValidateAudience = true,
-            ValidAudience = "https://localhost:4200",
+            ValidAudience = "https://localhost",
             ValidIssuer = "https://localhost",
             IssuerSigningKey = new SymmetricSecurityKey("sadawdwdawdadsdawdasdawdaxdwadaxcxcxcxcssa"u8.ToArray())
         };
@@ -99,6 +97,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSwaggerForOcelotUI(opt => { opt.PathToSwaggerGenerator = "/swagger/docs"; }).UseOcelot().Wait();

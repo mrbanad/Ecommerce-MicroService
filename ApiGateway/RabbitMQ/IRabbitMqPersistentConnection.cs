@@ -1,6 +1,6 @@
 ﻿using RabbitMQ.Client;
 
-namespace ProductService.RabbitMQ;
+namespace ApiGateway.RabbitMQ;
 
 public interface IRabbitMqPersistentConnection
     : IDisposable

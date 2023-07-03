@@ -1,0 +1,45 @@
+@page "/{page}"
+@page "/"
+@using Hamkare.Settings
+@inject NavigationManager NavigationManager
+
+@DrawPageTemplate()
+
+@code {
+
+    [Parameter]
+    public string? Page { get; set; }
+
+    RenderFragment DrawPageTemplate()
+    {
+        return builder =>
+        {
+            var componentType = ThemeSetting.GetPage(NavigationManager.ToAbsoluteUri(NavigationManager.Uri).LocalPath);
+
+            if (componentType == null)
+                NavigationManager.NavigateTo("NotFound");
+            else
+            {
+                builder.OpenComponent(0, componentType);
+
+                var parameters = ThemeSetting.GetParameters(NavigationManager.ToAbsoluteUri(NavigationManager.Uri).Query);
+                if (parameters.Any())
+                    foreach (var (item, index) in parameters.Select((value, i) => (value, ++i)))
+                        builder.AddAttribute(index, item.Key, item.Value);
+
+                builder.CloseComponent();
+            }
+        };
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ThemeSetting.SetTheme(ThemeSetting.ActiveTheme);
+    }
+
+    protected override void OnInitialized()
+    {
+        ThemeSetting.OnChange += StateHasChanged;
+    }
+
+}

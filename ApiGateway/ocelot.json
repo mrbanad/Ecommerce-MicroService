@@ -13,16 +13,26 @@
       "SwaggerKey": "Identity"
     },
     {
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/Identity/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 4201
+          "Port": 4203
         }
       ],
-      "UpstreamPathTemplate": "/product/{everything}",
-      "SwaggerKey": "product"
+      "UpstreamPathTemplate": "/Category/Identity/{everything}",
+      "UpstreamHttpMethod": [
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {},
+      "SwaggerKey": "Category"
     },
     {
       "DownstreamPathTemplate": "/Identity/{everything}",
@@ -30,15 +40,19 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 4201
+          "Port": 4203
         }
       ],
-      "UpstreamPathTemplate": "/product/Identity/{everything}",
+      "UpstreamPathTemplate": "/Category/Identity/{everything}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
         "AllowedScopes": []
       },
-      "SwaggerKey": "product"
+      "RouteClaimsRequirement": {},
+      "SwaggerKey": "Category"
     },
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -46,41 +60,149 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 4202
+          "Port": 4203
         }
       ],
-      "UpstreamPathTemplate": "/basket/{everything}",
-      "SwaggerKey": "basket"
+      "UpstreamPathTemplate": "/Category/{everything}",
+      "SwaggerKey": "Category"
+    },
+    {
+      "DownstreamPathTemplate": "/Identity/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4213
+        }
+      ],
+      "UpstreamPathTemplate": "/Comment/Identity/{everything}",
+      "UpstreamHttpMethod": [
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {},
+      "SwaggerKey": "Comment"
+    },
+    {
+      "DownstreamPathTemplate": "/Identity/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4213
+        }
+      ],
+      "UpstreamPathTemplate": "/Comment/Identity/{everything}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {},
+      "SwaggerKey": "Comment"
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4213
+        }
+      ],
+      "UpstreamPathTemplate": "/Comment/{everything}",
+      "SwaggerKey": "Comment"
+    },
+    {
+      "DownstreamPathTemplate": "/Identity/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4215
+        }
+      ],
+      "UpstreamPathTemplate": "/News/Identity/{everything}",
+      "UpstreamHttpMethod": [
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {},
+      "SwaggerKey": "News"
+    },
+    {
+      "DownstreamPathTemplate": "/Identity/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4215
+        }
+      ],
+      "UpstreamPathTemplate": "/News/Identity/{everything}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {},
+      "SwaggerKey": "News"
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4215
+        }
+      ],
+      "UpstreamPathTemplate": "/News/{everything}",
+      "SwaggerKey": "News"
     }
   ],
   "SwaggerEndPoints": [
     {
-      "Key": "Identity",
+      "Key": "Category",
       "Config": [
         {
-          "Name": "Identity",
+          "Name": "Category",
           "Version": "v1",
-          "Url": "https://localhost:4200/swagger/v1/swagger.json"
+          "Url": "https://localhost:4203/swagger/v1/swagger.json"
         }
       ]
     },
     {
-      "Key": "product",
+      "Key": "Comment",
       "Config": [
         {
-          "Name": "Product",
+          "Name": "Comment",
           "Version": "v1",
-          "Url": "https://localhost:4201/swagger/v1/swagger.json"
+          "Url": "https://localhost:4213/swagger/v1/swagger.json"
         }
       ]
     },
     {
-      "Key": "basket",
+      "Key": "News",
       "Config": [
         {
-          "Name": "Basket",
+          "Name": "News",
           "Version": "v1",
-          "Url": "https://localhost:4202/swagger/v1/swagger.json"
+          "Url": "https://localhost:4215/swagger/v1/swagger.json"
         }
       ]
     }

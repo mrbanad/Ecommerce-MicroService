@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using MudBlazor
+<MudNavMenu Dense="@true">
+
+    <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Group">Community</MudNavLink>
+    <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.LibraryBooks">Library</MudNavLink>
+    <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Group">Community</MudNavLink>
+
+    <MudNavGroup Title="Settings" Expanded="false" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Store">
+        <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Group">Community</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Group">Community</MudNavLink>
+    </MudNavGroup>
+
+</MudNavMenu>

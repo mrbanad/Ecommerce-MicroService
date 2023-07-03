@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace ApiGateway
+namespace ApiGateway.Middleware
 {
     public static class ExceptionHandlingConfiguration
     {

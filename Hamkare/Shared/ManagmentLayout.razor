@@ -1,0 +1,82 @@
+﻿@using System.Globalization
+@inject NavigationManager UriHelper;
+@inherits LayoutComponentBase
+
+<MudRTLProvider RightToLeft="true">
+
+    <MudThemeProvider Theme="_userPanelTheme" @bind-IsDarkMode="@_isDarkMode"/>
+    <MudDialogProvider/>
+    <MudSnackbarProvider/>
+
+    <MudLayout>
+
+        <MudAppBar Elevation="1" Dense="@true">
+
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer"/>
+
+            <MudToggleIconButton @bind-Toggled="@_isDarkMode"
+                                 Icon="@Icons.Material.Filled.LightMode"
+                                 ToggledIcon="@Icons.Material.Filled.DarkMode" Class="ma-4"/>
+
+            <MudSelect T="string" Value="CultureInfo.CurrentCulture.Name" ValueChanged="@(ChangeCorrectCulture)" DisableUnderLine="true" FullWidth="false" Margin="Margin.None" Class="mudBlazor-select-fit">
+                <MudSelectItem Value="@("fa-IR")">
+                    <img src="/Dist/Panel/Images/Flags/ir.svg" alt="Iran" height="18"/>
+                </MudSelectItem>
+                <MudSelectItem Value="@("en-US")">
+                    <img src="/Dist/Panel/Images/Flags/us.svg" alt="United State" height="18"/>
+                </MudSelectItem>
+                <MudSelectItem Value="@("ar-IQ")">
+                    <img src="/Dist/Panel/Images/Flags/iq.svg" alt="Iraq" height="18"/>
+                </MudSelectItem>
+            </MudSelect>
+
+            <MudSpacer/>
+            <MudIconButton Icon="@Icons.Material.Filled.Message" Link="/"/>
+            <MudIconButton Icon="@Icons.Material.Filled.CircleNotifications" Link="/"/>
+            <MudIconButton Icon="@Icons.Material.Filled.ExitToApp" Link="/"/>
+        </MudAppBar>
+
+        <MudDrawer @bind-Open="@_open" ClipMode="@DrawerClipMode.Always" Breakpoint="@Breakpoint.Md" PreserveOpenState="@false" Elevation="1" Variant="@DrawerVariant.Mini" OpenMiniOnHover="true" Class="px-0 px-sm-2" MiniWidth="74">
+            <ManagementNavMenu/>
+        </MudDrawer>
+
+        <MudMainContent>
+            <MudContainer MaxWidth="MaxWidth.Large" Class="my-4">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+
+
+    </MudLayout>
+
+</MudRTLProvider>
+
+@code {
+
+    bool _open;
+    private bool _isDarkMode = true;
+
+    void ToggleDrawer()
+    {
+        _open = !_open;
+    }
+
+    private void ChangeCorrectCulture(string value)
+    {
+        UriHelper.NavigateTo(
+            $"Culture/Set?culture={Uri.EscapeDataString(value)}&redirectUri={Uri.EscapeDataString(new Uri(UriHelper.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped))}",
+            forceLoad: true);
+    }
+
+    readonly MudTheme _userPanelTheme = new()
+    {
+        Typography = new Typography
+        {
+            Default = new Default
+            {
+                FontFamily = new[] {"Poppins", "Helvetica", "Arial", "sans-serif"}
+            }
+        }
+    };
+
+}

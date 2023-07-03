@@ -1,6 +1,5 @@
 ﻿using System.Net.Sockets;
 using Polly;
-using ProductService.RabbitMQ;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
@@ -122,6 +121,6 @@ public class RabbitMqPersistentConnection
     void ExchangesDeclare()
     {
         var channel = _connection.CreateModel();
-        channel.ExchangeDeclare(exchange: "Product", type: ExchangeType.Fanout);
+        channel.ExchangeDeclare(exchange: "News", type: ExchangeType.Fanout);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ProductService.RabbitMQ;
+﻿namespace ApiGateway.RabbitMQ;
 
 public class RabbitMqSettings
 {

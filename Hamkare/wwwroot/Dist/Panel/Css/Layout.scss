@@ -1,0 +1,27 @@
+﻿//#region MudSelect
+
+.mudBlazor-select-fit {
+
+  width: fit-content !important;
+
+  .mud-input-control-input-container {
+
+    width: fit-content !important;
+
+    .mud-input.mud-input-text.mud-input-adorned-end.mud-shrink.mud-select-input {
+      margin: 0 !important;
+    }
+  }
+}
+
+//#endregion
+
+//#region MudDrawer
+
+.mud-drawer--closed {
+  .mud-nav-link-expand-icon {
+    display: none;
+  }
+}
+
+//#endregion

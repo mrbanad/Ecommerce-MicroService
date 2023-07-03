@@ -1,6 +1,4 @@
-﻿using ProductService.RabbitMQ;
-
-namespace ApiGateway.RabbitMQ;
+﻿namespace ApiGateway.RabbitMQ;
 
 public class RabbitMqEvent : IHostedService
 {

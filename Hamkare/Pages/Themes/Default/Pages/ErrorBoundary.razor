@@ -1,0 +1,32 @@
+﻿@using Hamkare.Settings
+
+<div>
+    @if (hasError)
+    {
+        <h1>An error occurred</h1>
+        <p>@errorMessage</p>
+        <p>
+            <a href="@navManager.Uri">Reload</a>
+        </p>
+    }
+    else
+    {
+        @ChildContent
+    }
+</div>
+
+@code {
+
+    [CascadingParameter]
+    private ErrorBoundaryState State { get; set; }
+
+    [Inject]
+    private NavigationManager navManager { get; set; }
+
+    private bool hasError => State?.HasError ?? false;
+    private string errorMessage => State?.ErrorMessage ?? string.Empty;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+}
